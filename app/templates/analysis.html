@@ -4,6 +4,8 @@
         <title>dominant image colors</title>
     </head>
     <body>
-        <p>{{ test }}</p>
+        {% for color in colors %}
+            <p>{{ color }}</p>
+        {% endfor %}
     </body>
 </html>

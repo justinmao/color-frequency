@@ -2,6 +2,8 @@ import Image
 import scipy
 import scipy.misc
 import scipy.cluster
+import urllib2
+import cStringIO
 
 NUM_CLUSTERS = 20
 
@@ -23,7 +25,8 @@ def rgb_to_hex(rgb):
     return hex_string
 
 
-def clusters(image_file, n):
+def clusters(url, n):
+    image_file = cStringIO.StringIO(urllib2.urlopen(url).read())
     im = Image.open(image_file)
     ar = read_image(im)
     colors = []

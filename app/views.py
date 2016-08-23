@@ -1,4 +1,4 @@
-from flask import render_template, flash, redirect
+from flask import render_template, flash, redirect, request
 from app import app
 from .forms import ImageURLForm
 from .clustering import clusters
@@ -8,12 +8,16 @@ from .clustering import clusters
 def index():
     form = ImageURLForm()
     if form.validate_on_submit():
-        flash("Image URL: %s" % form.image_url.data)
-        colors = clusters(form.image_url.data, form.n.data)
-        return render_template("analysis.html", test="fsfs")
+        return render_template("analysis.html")
     return render_template("index.html", form=form)
 
 
-@app.route("/analysis", methods=['GET', 'POST'])
-def analysis(s):
-    return render_template("analysis.html", test=s)
+@app.route("/analysis", methods=['POST'])
+def analysis():
+    if request.method == 'POST':
+        form = request.form
+        image_url = form.get("image_url")
+        n = form.get("n")
+        colors = clusters(image_url, n)
+        return render_template("analysis.html", colors=colors)
+    return render_template("analysis.html")
