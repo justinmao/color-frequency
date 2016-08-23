@@ -2,7 +2,7 @@ import Image
 import scipy
 import scipy.misc
 import scipy.cluster
-import urllib2
+import urllib
 import cStringIO
 
 NUM_CLUSTERS = 20
@@ -26,17 +26,17 @@ def rgb_to_hex(rgb):
 
 
 def clusters(url, n):
-    image_file = cStringIO.StringIO(urllib2.urlopen(url).read())
+    image_file = cStringIO.StringIO(urllib.urlopen(url).read())
     im = Image.open(image_file)
     ar = read_image(im)
+    print "image read"
     colors = []
     # generates a codebook using k-means algorithm for n clusters from ndarray
     codes = scipy.cluster.vq.kmeans(ar.astype(float), NUM_CLUSTERS)[0]
     # array representation of a histogram
     count = scipy.histogram(scipy.cluster.vq.vq(ar, codes), len(codes))[0]
-
     i = 0
-    while i < n:
+    for i in range(int(n)):
         index = scipy.argmax(count)  # index of most occurring color
         if count[index] != 0:
             color = codes[index].astype(int)
@@ -44,5 +44,5 @@ def clusters(url, n):
             c_hex = "".join(chr(c) for c in color).encode("hex")
             colors.append((c_rgb, c_hex))
             count[index] = 0
-        i += 1
+    print colors
     return colors

@@ -16,8 +16,11 @@ def index():
 def analysis():
     if request.method == 'POST':
         form = request.form
-        image_url = form.get("image_url")
+        url = form.get("image_url")
         n = form.get("n")
-        colors = clusters(image_url, n)
+        colors = clusters(url, n)
+        print url
+        print n
+        print "successfully sent to function"
         return render_template("analysis.html", colors=colors)
     return render_template("analysis.html")
