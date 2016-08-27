@@ -17,25 +17,19 @@ def read_image(im):
     return ar.reshape(shape[0]*shape[1], shape[2])
 
 
-def rgb_to_hex(rgb):
-    # converts an rgb tuple (255, 255, 255) to a hex string ffffff
-    hex_string = ""
-    for dec in rgb:
-        hex_string += hex(dec).split("x")[1]
-    return hex_string
-
-
-def clusters(url, n):
+def get_palette(url, n):
+    # url(image), n(colors) -> list of n dominant colors
+    # does not check for validity of url nor checks for n > NUM_CLUSTERS!
     image_file = cStringIO.StringIO(urllib.urlopen(url).read())
     im = Image.open(image_file)
     ar = read_image(im)
-    print "image read"
     colors = []
     # generates a codebook using k-means algorithm for n clusters from ndarray
     codes = scipy.cluster.vq.kmeans(ar.astype(float), NUM_CLUSTERS)[0]
-    # array representation of a histogram
+    print codes
+    # sorted array representation of a histogram
     count = scipy.histogram(scipy.cluster.vq.vq(ar, codes), len(codes))[0]
-    i = 0
+    print count
     for i in range(int(n)):
         index = scipy.argmax(count)  # index of most occurring color
         if count[index] != 0:
@@ -44,5 +38,4 @@ def clusters(url, n):
             c_hex = "".join(chr(c) for c in color).encode("hex")
             colors.append((c_rgb, c_hex))
             count[index] = 0
-    print colors
     return colors

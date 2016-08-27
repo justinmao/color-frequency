@@ -4,11 +4,17 @@
         <title>dominant image colors</title>
     </head>
     <body>
-        <form action="/analysis" method="post" name="get_image_url">
+        <form action="/" method="post" name="get_image_url">
             {{ form.hidden_tag() }}
             <p>Image URL: {{ form.image_url(size=120) }}</p>
             <p>n top colors: {{ form.n(size=1) }}</p>
             <p><input type="submit" value="analyze!"></p>
         </form>
+        {% if image_url %}
+            <img src={{ image_url }}>
+            {% for color in colors %}
+                <p>{{ color[0] }} {{ color[1] }}</p>
+            {% endfor %}
+        {% endif %}
     </body>
 </html>
