@@ -1,0 +1,16 @@
+body img {
+    max-width: 50%;
+}
+#palette {
+    display: flex;
+}
+.main {
+    position: absolute:
+}
+.color {
+    display: inline-block;
+    position: relative;
+    width: 5em;
+    height: 5em;
+    margin: 1px;
+}
