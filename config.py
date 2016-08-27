@@ -1,2 +1,2 @@
 WTF_CSRF_ENABLED = True
-SECRET_KEY = 'you-will-never-guess'
+SECRET_KEY = open("CSRF_SECRET_KEY", "r").readline()

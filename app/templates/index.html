@@ -4,6 +4,7 @@
         <title>dominant image colors</title>
     </head>
     <body>
+        <link rel="stylesheet" type="text/css" href="style/main.css">
         <form action="/" method="post" name="get_image_url">
             {{ form.hidden_tag() }}
             <p>Image URL: {{ form.image_url(size=120) }}</p>
@@ -12,9 +13,13 @@
         </form>
         {% if image_url %}
             <img src={{ image_url }}>
-            {% for color in colors %}
-                <p>{{ color[0] }} {{ color[1] }}</p>
-            {% endfor %}
+            <div id="palette">
+                {% for color in colors %}
+                    <div class="color" style="background-color:#{{ color[1] }}">
+                        {{ color[0] }}
+                    </div>
+                {% endfor %}
+            </div>
         {% endif %}
     </body>
 </html>
