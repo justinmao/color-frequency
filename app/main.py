@@ -25,17 +25,12 @@ def get_palette(url, n):
     ar = read_image(im)
     colors = []
     # generates a codebook using k-means algorithm for n clusters from ndarray
+    # note already sorted by descending cluster size
     codes = scipy.cluster.vq.kmeans(ar.astype(float), NUM_CLUSTERS)[0]
-    print codes
-    # sorted array representation of a histogram
-    count = scipy.histogram(scipy.cluster.vq.vq(ar, codes), len(codes))[0]
-    print count
-    for i in range(int(n)):
-        index = scipy.argmax(count)  # index of most occurring color
-        if count[index] != 0:
-            color = codes[index].astype(int)
-            c_rgb = (color[0], color[1], color[2])
-            c_hex = "".join(chr(c) for c in color).encode("hex")
-            colors.append((c_rgb, c_hex))
-            count[index] = 0
-    return colors
+    palette = []
+    for code in codes[:int(n)]:
+        color = code.astype(int)
+        c_rgb = (color[0], color[1], color[2])
+        c_hex = "".join(chr(c) for c in color).encode("hex")
+        palette.append((c_rgb, c_hex))
+    return palette
