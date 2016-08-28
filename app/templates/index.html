@@ -1,25 +1,19 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>dominant image colors</title>
-    </head>
-    <body>
-        <link rel="stylesheet" type="text/css" href="style/main.css">
+<head>
+    <title>quick palette</title>
+</head>
+<body>
+    <link rel="stylesheet" type="text/css" href="/static/css/home.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css'>
+    <div id="main">
+        <div id="title">quick palette</div>
         <form action="/" method="post" name="get_image_url">
-            {{ form.hidden_tag() }}
-            <p>Image URL: {{ form.image_url(size=120) }}</p>
-            <p>n top colors: {{ form.n(size=1) }}</p>
-            <p><input type="submit" value="analyze!"></p>
+            {{ form.image_url(id="url", class="field", placeholder="image url") }}
+            {{ form.n(id="n", class="field", placeholder="#") }}
+            <button type="submit"><i class="fa fa-angle-right" aria-hidden="true"></i></button>
         </form>
-        {% if image_url %}
-            <img src={{ image_url }}>
-            <div id="palette">
-                {% for color in colors %}
-                    <div class="color" style="background-color:#{{ color[1] }}">
-                        {{ color[0] }}
-                    </div>
-                {% endfor %}
-            </div>
-        {% endif %}
-    </body>
+    </div>
+</body>
 </html>

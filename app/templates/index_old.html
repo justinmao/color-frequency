@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>dominant image colors</title>
+    </head>
+    <body>
+        <link rel="stylesheet" type="text/css" href="/static/css/render.css">
+		<link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css'>
+            <form action="/" method="post" name="get_image_url">
+                {{ form.hidden_tag() }}
+                {{ form.image_url(class="form_url", placeholder="image url") }}
+                {{ form.n(class="form_n", placeholder="n") }}
+                <input class="submit" type="submit"  value="analyze!">
+            </form>
+            {% if image_url %}
+                <img src={{ image_url }}>
+                <div class="palette">
+                    {% for color in colors %}
+                        <div class="color" style="background-color:#{{ color[1] }}">
+                            {% if color[0][0]*0.299 + color[0][1]*0.587 + color[0][2]*0.114 > 186 %}
+                                <font color="black">
+                            {% else %}
+                                <font color="white">
+                            {% endif %}
+                                    {{ color[0] }}
+                                </font>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+    </body>
+</html>
