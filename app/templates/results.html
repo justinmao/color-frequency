@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>quick palette</title>
+</head>
+<body>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="/static/css/render.css">
+    <div id="main">
+        <form action="/" method="post" name="get_image_url">
+            {{ form.image_url(id="url", class="field", placeholder="image url") }}
+            {{ form.n(id="n", class="field", placeholder="#") }}
+            <button type="submit"><i class="fa fa-angle-right" aria-hidden="true"></i></button>
+        </form>
+        <div id="results">
+            <img src={{ image_url }}>
+            {% for color in colors %}
+                <div class="color" style="background-color:#{{ color[1] }}">
+                    {% if color[0][0]*0.299 + color[0][1]*0.587 + color[0][2]*0.114 > 186 %}
+                        <font color="black">
+                    {% else %}
+                        <font color="white">
+                    {% endif %}
+                            {{ color[0] }}
+                        </font>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

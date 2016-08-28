@@ -1,50 +1,65 @@
 html {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 16px;
 }
 body {
-    margin: 0em;
-}
-body img {
-    max-width: 50%;
-}
-form {
-    background-color: ##ECF0F1;
-    color: black;
+    margin: 0px;
+    display: flex;
+    justify-content: center;
 }
 input[type="text"] {
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 16px;
+    font-size: 14px;
 }
-.form_url {
+button {
+    background-color: #5bb7e5;
+    font-size: 14px;
+    color: white;
     box-sizing: border-box;
-    border: none;
-    margin: 0em;
-    outline: none;
-    padding: 0.5em;
-    width: 50%;
+    border: 0px solid;
+    border-radius: 6px;
+    margin: 2px;
+    width: 34px;
 }
-.form_n {
-    box-sizing: border-box;
-    border: none;
-    margin: 0em;
-    outline: none;
-    padding: 0.5em;
-    width: 10%;
+button:focus {
+    background-color: #51a3cc;
+    outline: 0;
 }
-.submit {
-    background: #4B99AD;
-    padding: 0.5em;
-    border: none;
-    color: #fff;
-}
-.palette {
+form {
+    padding: 28px;
     display: flex;
+    justify-content: center;
 }
-.color {
-    display: inline-block;
-    position: relative;
-    width: 5em;
-    height: 5em;
-    margin: 1px;
+img {
+    max-width: 280px;
+    max-height: 280px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+#main {
+    position: absolute;
+	width: 80%;
+	max-width: 960px;
+}
+#results {
+    display: flex;
+    justify-content: center;
+}
+.field {
+    box-sizing: border-box;
+    border: 1px solid #c2c2c2;
+    border-radius: 6px;
+    padding: 8px;
+    margin: 2px;
+}
+.field:hover {
+    border: 1px solid #aeaeae;
+}
+.field:focus {
+    border: 1px solid #5bb7e5;
+    outline: 0;
+}
+.field#url {
+    width: 100%;
+}
+.field#n {
+    width: 34px;
 }

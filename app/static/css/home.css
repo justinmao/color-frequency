@@ -30,6 +30,8 @@ form {
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -100%);
+	width: 80%;
+	max-width: 800px;
 }
 #title {
     font-family: "Quicksand", sans-serif;
@@ -53,9 +55,7 @@ form {
     outline: 0;
 }
 .field#url {
-    width: 60%;
-    max-width: 700px;
-    min-width: 420px;
+    width: 100%;
 }
 .field#n {
     width: 34px;
