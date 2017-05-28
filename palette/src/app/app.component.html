@@ -1,3 +1,5 @@
-<h1>
-  {{title}}
-</h1>
+<h1>{{title}}</h1>
+<h2>{{ imageUrl }}</h2>
+<ul *ngFor='let centroid of centroids'>
+  <li>{{ centroid }}</li>
+</ul>
