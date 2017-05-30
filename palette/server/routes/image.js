@@ -10,7 +10,7 @@ router.route('/image')
     request(url, function(error, response, body) {
       var img = new Image();
       img.onload = function() {
-        var centroids = analyze(img, 8);  // 3 color placeholder
+        var centroids = analyze(img, req.body.k);
         res.json({
           centroids: centroids
         });

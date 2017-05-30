@@ -8,7 +8,7 @@ import { AppService } from './app.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'app works!';
+  k = "6";
   imageUrl = 'http://www.fnordware.com/superpng/pnggrad16rgb.png';
   centroids: any = [];
   colors: any = [];
@@ -43,7 +43,7 @@ export class AppComponent implements OnInit {
     }
   }
   getPalette() {
-    this.appService.makePaletteRequest(this.imageUrl).subscribe(centroids => {
+    this.appService.makePaletteRequest(this.imageUrl, this.k).subscribe(centroids => {
       this.centroids = centroids.centroids;
     })
   }

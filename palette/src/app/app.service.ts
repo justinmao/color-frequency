@@ -7,9 +7,10 @@ export class AppService {
 
   constructor(private http: Http) { }
 
-  makePaletteRequest(imageUrl) {
+  makePaletteRequest(imageUrl, k) {
     var request = {
-      'url': imageUrl
+      'url': imageUrl,
+      'k': k
     }
     return this.http.post('/api/image', request)
       .map((response: Response) => response.json());
