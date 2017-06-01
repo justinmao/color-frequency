@@ -12,7 +12,7 @@ export class AppService {
       'url': imageUrl,
       'k': k
     }
-    return this.http.post('/api/image', request)
+    return this.http.post('http://localhost:3000/api/image', request)
       .map((response: Response) => response.json());
   }
 

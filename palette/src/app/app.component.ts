@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import { AppService } from './app.service';
 
+import { Color } from './color';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -35,11 +37,13 @@ export class AppComponent implements OnInit {
     this.getPalette();
     for (var i = 0; i < this.centroids.length; ++i) {
       var centroid = this.centroids[i];
-      var r = Math.floor(centroid[0]);
-      var g = Math.floor(centroid[1]);
-      var b = Math.floor(centroid[2]);
-      var a = Math.round(centroid[3]/255 * 10)/10;
-      this.colors.push("rgba(" + r + ", " + g + ", " + b + ", " + a + ")");
+      var color = new Color();
+      color.r = Math.floor(centroid[0]);
+      color.g = Math.floor(centroid[1]);
+      color.b = Math.floor(centroid[2]);
+      color.a = Math.round(centroid[3]/255 * 10)/10;
+      color.string = "rgba(" + color.r + ", " + color.g + ", " + color.b + ", " + color.a + ")";
+      this.colors.push(color);
     }
   }
   getPalette() {
