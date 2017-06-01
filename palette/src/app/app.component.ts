@@ -43,13 +43,13 @@ export class AppComponent implements OnInit {
       color.b = Math.floor(centroid[2]);
       color.a = Math.round(centroid[3]/255 * 10)/10;
       color.string = "rgba(" + color.r + ", " + color.g + ", " + color.b + ", " + color.a + ")";
-      color.textColor = this.getTextColor(color.r, color.g, color.b);
+      color.textColor = this.getTextColor(color.r, color.g, color.b, color.a);
       this.colors.push(color);
     }
   }
 
-  getTextColor(r, g, b) {
-    if (r*0.299 + g*0.587 + b*0.114 > 186) {
+  getTextColor(r, g, b, a) {
+    if (r*0.299 + g*0.587 + b*0.114 > 186 || a < 0.4) {
       return "black"
     } else {
       return "white"

@@ -19,6 +19,7 @@ html {
 .colorblock {
   width: 80px;
   height: 80px;
+  padding: 10px;
 }
 img {
   flex-shrink: 0;
