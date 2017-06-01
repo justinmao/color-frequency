@@ -4,4 +4,5 @@ export class Color {
   b: Number;
   a: Number;
   string: String;
+  textColor: String;
 }

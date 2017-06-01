@@ -12,7 +12,7 @@
       <img [src]="imageUrl">
       <div id="palette">
         <div *ngFor='let color of colors'>
-          <div class="colorblock" [style.backgroundColor]="color.string">
+          <div class="colorblock" [style.backgroundColor]="color.string" [style.color]="color.textColor">
             R: {{ color.r }}<br>
             G: {{ color.g }}<br>
             B: {{ color.b }}<br>
