@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
-import { AppService } from './app.service';
+import { AppService } from './_services/app.service';
 
-import { Color } from './color';
+import { Color } from './_models/color';
 
 @Component({
   selector: 'app-root',

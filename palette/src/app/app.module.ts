@@ -6,7 +6,7 @@ import { ChartsModule } from 'ng2-charts';
 
 import { AppComponent } from './app.component';
 
-import { AppService } from './app.service';
+import { AppService } from './_services/app.service';
 
 @NgModule({
   declarations: [
