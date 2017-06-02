@@ -6,7 +6,7 @@
       <input type="text" [(ngModel)]="imageUrl" name="imageUrl"><br>
       <label for="k">Number of colors:</label>
       <input type="text" [(ngModel)]="k" name="k"><br>
-      <button type="submit" class="btn btn-success" (click)="analyze()">Vamanos!</button>
+      <button type="submit" class="btn btn-success" (click)="analyze()" [disabled]="buttonDisabled">{{ buttonText }}</button>
     </form>
     <div id="container">
       <img [src]="imageUrl">

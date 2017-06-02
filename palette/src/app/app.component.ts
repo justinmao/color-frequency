@@ -15,6 +15,8 @@ export class AppComponent implements OnInit {
   centroids: any = [];
   colors: any = [];
   errorDisplay = "none";
+  buttonDisabled = false;
+  buttonText = "Vamanos!";
 
   // public doughnutChartLabels:string[] = ['Download Sales', 'In-Store Sales', 'Mail-Order Sales'];
   // public doughnutChartData:number[] = [350, 450, 100];
@@ -34,6 +36,8 @@ export class AppComponent implements OnInit {
   }
 
   analyze() {
+    this.buttonDisabled = true;
+    this.buttonText = "Loading...";
     this.getPalette();
   }
 
@@ -65,10 +69,15 @@ export class AppComponent implements OnInit {
     this.appService.makePaletteRequest(this.imageUrl, this.k).subscribe(centroids => {
       this.centroids = centroids.centroids;
       this.getColors();
+      this.buttonDisabled = false;
+      this.buttonText = "Vamanos!";
     }, error => {
       this.colors = []
       this.errorDisplay = "inline";
+      this.buttonDisabled = false;
+      this.buttonText = "Vamanos!";
     });
+
   }
 
 }
