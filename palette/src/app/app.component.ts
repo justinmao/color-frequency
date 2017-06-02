@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ApplicationRef } from '@angular/core';
 
 import { AppService } from './_services/app.service';
 
@@ -27,14 +27,17 @@ export class AppComponent implements OnInit {
   //   console.log(e);
   // }
 
-  constructor(private appService: AppService) { }
+  constructor(private appService: AppService, private appRef: ApplicationRef) { }
 
   ngOnInit() {
   }
 
   analyze() {
-    this.colors = [];
     this.getPalette();
+  }
+
+  getColors() {
+    this.colors = [];
     for (var i = 0; i < this.centroids.length; ++i) {
       var centroid = this.centroids[i];
       var color = new Color();
@@ -59,6 +62,7 @@ export class AppComponent implements OnInit {
   getPalette() {
     this.appService.makePaletteRequest(this.imageUrl, this.k).subscribe(centroids => {
       this.centroids = centroids.centroids;
+      this.getColors();
     })
   }
 
