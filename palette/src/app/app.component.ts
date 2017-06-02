@@ -14,6 +14,7 @@ export class AppComponent implements OnInit {
   imageUrl = 'http://www.fnordware.com/superpng/pnggrad16rgb.png';
   centroids: any = [];
   colors: any = [];
+  errorDisplay = "none";
 
   // public doughnutChartLabels:string[] = ['Download Sales', 'In-Store Sales', 'Mail-Order Sales'];
   // public doughnutChartData:number[] = [350, 450, 100];
@@ -60,10 +61,14 @@ export class AppComponent implements OnInit {
   }
 
   getPalette() {
+    this.errorDisplay = "none";
     this.appService.makePaletteRequest(this.imageUrl, this.k).subscribe(centroids => {
       this.centroids = centroids.centroids;
       this.getColors();
-    })
+    }, error => {
+      this.colors = []
+      this.errorDisplay = "inline";
+    });
   }
 
 }
