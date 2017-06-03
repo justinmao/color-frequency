@@ -2,6 +2,8 @@
 
 A live demo may be found [here](http://104.236.97.183/).
 
+![screenshot goes here](screenshot.jpg)
+
 ## How does it work?
 
 ### The Math
