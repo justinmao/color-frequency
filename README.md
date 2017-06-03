@@ -4,6 +4,14 @@ A live demo may be found [here](http://104.236.97.183/).
 
 ![screenshot goes here](screenshot.png)
 
+## Running
+
+After cloning, navigate to **/palette** and run `npm install`.
+
+The service can be started by running `ng build` then `node server.js`.
+
+**Note:** The dependency [Canvas](https://www.npmjs.com/package/canvas) requires [Cairo](https://github.com/Automattic/node-canvas/wiki/_pages) to be installed.
+
 ## How does it work?
 
 ### The Math
