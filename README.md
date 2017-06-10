@@ -1,6 +1,6 @@
 # A minimal color-palette generator, written in javascript.
 
-A live demo may be found [here](http://104.236.97.183/).
+A live demo (should be) running [here](http://104.236.97.183/).
 
 ![screenshot goes here](screenshot.png)
 
